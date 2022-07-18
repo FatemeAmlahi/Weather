@@ -18,6 +18,26 @@
   <body>
     <div class="content">
       <div class="container">
+        <form id="location-form" class="mb-3">
+          <div class="row">
+            <div class="col-9">
+              <input
+                type="text"
+                placeholder="Enter a city..."
+                class="form-control"
+                id="location-input"
+                autocomplete="off"
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Search"
+                class="btn btn-primary w-100"
+              />
+            </div>
+          </div>
+        </form>
         <h1 id="city">New York,US</h1>
         <ul class="date">
           <li id="time">July13,Friday, 05:34</li>
@@ -25,13 +45,17 @@
         </ul>
         <div class="row">
           <div class="col weather">
-            <img src="src/download.png" alt="weather icon" id="icon" />
+            <img
+              src="http://openweathermap.org/img/wn/04d@2x.png"
+              alt="weather icon"
+              id="icon"
+            />
             <span id="temprature">25</span>
-            <span class="degree">°C|<a href="#">°F</a></span>
+            <span class="degree">°C|<a href="#" id="fahrenheit">°F</a></span>
           </div>
           <div class="col">
             <ul>
-              <li>Feels like: <span id="feelLike">24</span>°C</li>
+              <li>Feels like: <span id="feelLike">24</span>°C|°F</li>
               <li>Humidity: <span id="humidity">73</span>%</li>
               <li>Wind:<span id="wind">2</span> Km/h</li>
             </ul>

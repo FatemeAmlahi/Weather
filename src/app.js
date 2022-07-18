@@ -24,27 +24,37 @@ let now = new Date();
 let calendar = document.querySelector("#time");
 calendar.innerHTML = currentDate();
 
-function showTemprature(response) {
-  let temprature = document.querySelector("#temprature");
-  let city = document.querySelector("#city");
-  let description = document.querySelector("#description");
-  let feelsLike = document.querySelector("#feelLike");
-  let humidity = document.querySelector("#humidity");
-  let wind = document.querySelector("#wind");
-  let icon = document.querySelector("#icon");
-
-  temprature.innerHTML = Math.round(response.data.main.temp);
-  city.innerHTML = `${response.data.name},${response.data.sys.country}`;
-  description.innerHTML = response.data.weather[0].description;
-  feelsLike.innerHTML = Math.round(response.data.main.feels_like);
-  humidity.innerHTML = response.data.main.humidity;
-  wind.innerHTML = Math.round(response.data.wind.speed);
-  icon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+function changeCity(event) {
+  event.preventDefault();
+  let city = document.querySelector("#location-input").value;
+  let apiKey = "d79f110cc683c7f64eae529b0bc53eaf";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemprature);
 }
-
-let apiKey = "d79f110cc683c7f64eae529b0bc53eaf";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Tehran&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(showTemprature);
+let locationForm = document.querySelector("#location-form");
+locationForm.addEventListener("submit", changeCity);
+function showTemprature(response) {
+  celsiusTemp = response.data.main.temp;
+  feelLikeTemp = response.data.main.feels_like;
+  document.querySelector("#temprature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector(
+    "#city"
+  ).innerHTML = `${response.data.name},${response.data.sys.country}`;
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].description;
+  document.querySelector("#feelLike").innerHTML = Math.round(
+    response.data.main.feels_like
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+}
