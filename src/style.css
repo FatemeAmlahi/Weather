@@ -37,3 +37,10 @@ a {
   bottom: 17px;
   right: 10px;
 }
+.active {
+  color: black;
+  cursor: default;
+}
+.active:hover {
+  color: black;
+}

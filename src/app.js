@@ -58,3 +58,29 @@ function showTemprature(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
 }
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  document.querySelector("#temprature").innerHTML = Math.round(
+    (celsiusTemp * 9) / 5 + 32
+  );
+  document.querySelector("#feelLike").innerHTML = Math.round(
+    (feelLikeTemp * 9) / 5 + 32
+  );
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+}
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  document.querySelector("#temprature").innerHTML = Math.round(celsiusTemp);
+  document.querySelector("#feelLike").innerHTML = Math.round(feelLikeTemp);
+  fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
+}
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", showFahrenheitTemp);
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", showCelsiusTemp);
+
+let celsiusTemp = null;
+let feelLikeTemp = null;
