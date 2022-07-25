@@ -7,8 +7,9 @@ ul {
 }
 li {
   text-transform: capitalize;
+  color: rgb(93, 92, 92);
 }
-img {
+.icon img {
   width: 90px;
 }
 a {
@@ -26,7 +27,6 @@ a {
 }
 .date {
   font-size: 17px;
-  color: rgb(93, 92, 92);
 }
 .weather {
   font-size: 40px;
@@ -43,4 +43,10 @@ a {
 }
 .active:hover {
   color: black;
+}
+.forcast {
+  text-align: center;
+}
+.forcast-temp-min {
+  color: rgb(93, 92, 92);
 }
