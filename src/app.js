@@ -23,6 +23,31 @@ function currentDate() {
 let now = new Date();
 let calendar = document.querySelector("#time");
 calendar.innerHTML = currentDate();
+function showForcast() {
+  let forcastElement = document.querySelector("#forcast");
+  let forcastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+    forcastHTML =
+      forcastHTML +
+      `             
+            <div class="col">
+                <div>${day}</div>
+                <img
+                  src="http://openweathermap.org/img/wn/04n@2x.png"
+                  alt="forcastIcon"
+                  width="30px"
+                />
+                <div class="forcasr-temp">
+                  <span class="forcast-temp-max">18°</span>
+                  <span class="forcast-temp-min"> 12°</span>
+                </div>
+          </div>`;
+  });
+
+  forcastHTML = forcastHTML + `</div>`;
+  forcastElement.innerHTML = forcastHTML;
+}
 
 function changeCity(event) {
   event.preventDefault();
@@ -84,3 +109,4 @@ celsius.addEventListener("click", showCelsiusTemp);
 
 let celsiusTemp = null;
 let feelLikeTemp = null;
+showForcast();

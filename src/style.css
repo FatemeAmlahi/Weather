@@ -46,6 +46,7 @@ a {
 }
 .forcast {
   text-align: center;
+  margin: 8px;
 }
 .forcast-temp-min {
   color: rgb(93, 92, 92);
