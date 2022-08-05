@@ -23,7 +23,8 @@ function currentDate() {
 let now = new Date();
 let calendar = document.querySelector("#time");
 calendar.innerHTML = currentDate();
-function showForcast() {
+function showForcast(response) {
+  console.log(response.data.daily);
   let forcastElement = document.querySelector("#forcast");
   let forcastHTML = `<div class="row">`;
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
@@ -47,6 +48,12 @@ function showForcast() {
 
   forcastHTML = forcastHTML + `</div>`;
   forcastElement.innerHTML = forcastHTML;
+}
+function getForcast(coordinates) {
+  let apiKey = "d79f110cc683c7f64eae529b0bc53eaf";
+  let Url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=minutely,hourly&appid=${apiKey}&units=metric`;
+  axios.get(Url).then(showForcast);
+  console.log(Url);
 }
 
 function changeCity(event) {
@@ -82,6 +89,7 @@ function showTemprature(response) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+  getForcast(response.data.coord);
 }
 function showFahrenheitTemp(event) {
   event.preventDefault();
@@ -109,4 +117,3 @@ celsius.addEventListener("click", showCelsiusTemp);
 
 let celsiusTemp = null;
 let feelLikeTemp = null;
-showForcast();
