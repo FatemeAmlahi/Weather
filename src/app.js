@@ -31,7 +31,6 @@ function formatDay(timestamp) {
 }
 function showForcast(response) {
   let forcast = response.data.daily;
-  console.log(forcast);
   let forcastElement = document.querySelector("#forcast");
   let forcastHTML = `<div class="row">`;
   forcast.forEach(function (forcastDay, index) {
@@ -104,29 +103,3 @@ function showTemprature(response) {
     );
   getForcast(response.data.coord);
 }
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  document.querySelector("#temprature").innerHTML = Math.round(
-    (celsiusTemp * 9) / 5 + 32
-  );
-  document.querySelector("#feelLike").innerHTML = Math.round(
-    (feelLikeTemp * 9) / 5 + 32
-  );
-  celsius.classList.remove("active");
-  fahrenheit.classList.add("active");
-}
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  document.querySelector("#temprature").innerHTML = Math.round(celsiusTemp);
-  document.querySelector("#feelLike").innerHTML = Math.round(feelLikeTemp);
-  fahrenheit.classList.remove("active");
-  celsius.classList.add("active");
-}
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", showFahrenheitTemp);
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", showCelsiusTemp);
-
-let celsiusTemp = null;
-let feelLikeTemp = null;

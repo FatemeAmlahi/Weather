@@ -9,6 +9,9 @@ li {
   text-transform: capitalize;
   color: rgb(93, 92, 92);
 }
+.wind {
+  text-transform: lowercase;
+}
 .icon img {
   width: 90px;
 }
@@ -36,13 +39,6 @@ a {
   position: relative;
   bottom: 17px;
   right: 10px;
-}
-.active {
-  color: black;
-  cursor: default;
-}
-.active:hover {
-  color: black;
 }
 .forcast {
   text-align: center;
